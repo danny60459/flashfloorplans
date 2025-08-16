@@ -7,6 +7,7 @@
   <meta name="description" content="Fast, accurate floor plans — plus 3D tours and listing-ready photos for Chicagoland realtors." />
   <meta property="og:title" content="Flash Floor Plans" />
   <meta property="og:description" content="Real estate media: 3D Tours, Floor Plans, Photo Extracts. Serving Chicagoland." />
+  <!-- Favicon set dynamically; static fallback below -->
   <link rel="icon" type="image/png" href="FFP-LOGO.png" />
   <style>
     :root{ --bg:#0b0d12; --panel:#121624; --muted:#8f9bb3; --brand:#4ade80; --brand2:#22d3ee; --text:#eef2ff; --ring:0 0 0 2px #4ade80aa; }
@@ -45,7 +46,6 @@
     footer{border-top:1px solid #20253a;padding:30px 0;color:#93a1c8}
     .input{width:100%;margin-top:6px;background:#0c1020;border:1px solid #25304e;border-radius:12px;padding:12px;color:#e8eeff}
     .input:focus{outline:none;box-shadow:var(--ring)}
-    .header-actions{display:flex;gap:12px;align-items:center}
     .brand-name{font-weight:800;font-size:16px}
     .brand-lockup{display:flex;align-items:center;gap:14px}
     .brand-lockup img{height:64px;width:auto;border-radius:12px;box-shadow:0 8px 28px #22d3ee33}
@@ -55,7 +55,8 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Flash Floor Plans">
-        <img src="FFP-LOGO.png" alt="Flash Floor Plans logo" />
+        <!-- logo src is set by JS with fallbacks -->
+        <img id="logoSmall" alt="Flash Floor Plans logo" />
         <span class="brand-name">Flash Floor Plans</span>
       </a>
       <nav class="header-actions">
@@ -71,7 +72,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="brand-lockup">
-        <img src="FFP-LOGO-FULL.png" alt="Flash Floor Plans full logo" />
+        <img id="logoFull" alt="Flash Floor Plans full logo" />
         <div>
           <div class="kicker">Real Estate Media • Chicagoland</div>
           <h1>Fast, Accurate Floor Plans — plus 3D Tours & Listing-Ready Photos</h1>
@@ -83,65 +84,47 @@
 
     <!-- EXAMPLES -->
     <section id="examples" class="grid" style="margin-top:24px">
-      <article class="card split">
+      <!-- 3D TOUR with poster + smart fallback -->
+      <article class="card split" id="tour">
         <div class="kicker">Example • 3D Tour</div>
         <h2 class="h2">Interactive 3D Tour (Matterport)</h2>
-        <div class="embed" aria-label="3D tour embed">
-          <iframe
-            title="Matterport"
-            src="https://my.matterport.com/show/?m=YeEs53oQXCi&mls=1&brand=0&play=1"
-            allow="xr-spatial-tracking; fullscreen; vr"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
+
+        <!-- Poster first -->
+        <div id="tourPoster" style="position:relative;border:1px solid #20253a;border-radius:16px;overflow:hidden;background:#0c1020">
+          <img id="tourPosterImg" alt="3D Tour preview" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover">
+          <a id="tourOpenLink" href="#" target="_blank" rel="noopener noreferrer"
+             style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+            <span style="background:rgba(0,0,0,.5);padding:14px 18px;border-radius:999px;border:1px solid #2a314a;font-weight:700;">
+              ▶ Open Tour
+            </span>
+          </a>
         </div>
+
+        <!-- Iframe hidden until load -->
+        <div class="embed" id="tourEmbed" style="display:none;margin-top:12px">
+          <iframe id="mpIframe" title="Matterport" allow="xr-spatial-tracking; fullscreen; vr" allowfullscreen loading="lazy"></iframe>
+        </div>
+
         <p class="note" style="margin-top:8px">
-          If the embed doesn’t load,
-          <a href="https://my.matterport.com/show/?m=YeEs53oQXCi&mls=1&brand=0&play=1" target="_blank" rel="noopener noreferrer">open the tour in a new tab</a>.
+          If the embed doesn’t load, <a id="tourOpenLink2" href="#" target="_blank" rel="noopener noreferrer">open the tour in a new tab</a>.
         </p>
       </article>
 
+      <!-- FLOOR PLAN -->
       <article class="card split">
         <div class="kicker">Example • Floor Plan</div>
         <h2 class="h2">Measured Floor Plan</h2>
-        <p class="muted">View the full schematic as a PDF, plus optional preview images.</p>
+        <p class="muted">View the full schematic as a PDF.</p>
         <p style="margin-top:12px">
-          <a class="btn" href="EXAMPLE-floorplan.pdf" target="_blank" rel="noopener">View Floor Plan (PDF)</a>
+          <a class="btn" id="fpBtn" href="#" target="_blank" rel="noopener">View Floor Plan (PDF)</a>
         </p>
       </article>
 
+      <!-- PHOTO EXTRACTS (built via JS with smart path/case fallback) -->
       <article class="card" style="grid-column:span 12">
         <div class="kicker">Example • Photo Extracts</div>
         <h2 class="h2">Listing-Ready Photos</h2>
-        <div class="gallery">
-          <img class="shot" src="01-ENTRY.JPG" alt="Entry">
-          <img class="shot" src="02-DINING-ROOM.JPG" alt="Dining">
-          <img class="shot" src="03-LIVING-ROOM.JPG" alt="Living">
-          <img class="shot" src="04-BUTLERS-PANTRY.JPG" alt="Butler's Pantry">
-          <img class="shot" src="05-POWDER-ROOM.JPG" alt="Powder Room">
-          <img class="shot" src="06-LAUNDRY.JPG" alt="Laundry">
-          <img class="shot" src="07-KITCHEN.JPG" alt="Kitchen">
-          <img class="shot" src="08-BREAKFAST-AREA.JPG" alt="Breakfast Area">
-          <img class="shot" src="09-FAMILY-ROOM.JPG" alt="Family Room">
-          <img class="shot" src="10-OFFICE.JPG" alt="Office">
-          <img class="shot" src="11-BEDROOM-02.JPG" alt="Bedroom 02">
-          <img class="shot" src="12-2ND-FL-BATHROOM.JPG" alt="2nd Floor Bathroom">
-          <img class="shot" src="13-2ND-FL-BEDROOM-03.JPG" alt="2nd Floor Bedroom 03">
-          <img class="shot" src="14-2ND-FL-LOFT.JPG" alt="2nd Floor Loft">
-          <img class="shot" src="15-2ND-FL-BEDROOM-04.JPG" alt="2nd Floor Bedroom 04">
-          <img class="shot" src="16-PRIMARY-BEDROOM.JPG" alt="Primary Bedroom">
-          <img class="shot" src="17-PRIMARY-WIC.JPG" alt="Primary WIC">
-          <img class="shot" src="18-PRIMARY-BATHROOM.JPG" alt="Primary Bathroom">
-          <img class="shot" src="19-EXT-FRONT-DOOR.JPG" alt="Front Door">
-          <img class="shot" src="20-EXT-FRONT-CENTER.JPG" alt="Front Center">
-          <img class="shot" src="21-EXT-FRONT-RIGHT.JPG" alt="Front Right">
-          <img class="shot" src="22-EXT-FRONT-LEFT.JPG" alt="Front Left">
-          <img class="shot" src="23-EXT-REAR-CENTER.JPG" alt="Rear Center">
-          <img class="shot" src="24-EXT-REAR-RIGHT.JPG" alt="Rear Right">
-          <img class="shot" src="25-EXT-REAR-LEFT.JPG" alt="Rear Left">
-          <img class="shot" src="26-EXT-PATIO.JPG" alt="Patio">
-          <img class="shot" src="27-EXT-YARD.JPG" alt="Yard">
-        </div>
+        <div class="gallery" id="gallery"></div>
       </article>
     </section>
 
@@ -243,16 +226,151 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = new FormData(this);
-      const subject = encodeURIComponent('Flash Floor Plans Booking');
-      const body = encodeURIComponent(
-        `Agent: ${data.get('name')||''}\nBrokerage: ${data.get('company')||''}\nEmail: ${data.get('email')||''}\nAddress: ${data.get('address')||''}\nNotes: ${data.get('notes')||''}`
-      );
-      window.location.href = `mailto:danny60459@gmail.com?subject=${subject}&body=${body}`;
-    });
+    // ---------- utilities ----------
+    async function resolveOne(candidates) {
+      for (const url of candidates) {
+        try {
+          const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+          if (res.ok) return url;
+        } catch (e) {}
+      }
+      return null;
+    }
+    function candidatePaths(nameNoExt, exts, prefixes) {
+      const list = [];
+      for (const p of prefixes) {
+        for (const e of exts) list.push((p ? p + '/' : '') + nameNoExt + e);
+      }
+      return list;
+    }
+
+    // ---------- site init ----------
+    (async function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Paths to try (so you don't have to move files around)
+      const prefixes = ['', 'portfolio/example', 'assets', 'assets/images'];
+      const imgExts = ['.JPG','.jpg','.JPEG','.jpeg','.PNG','.png'];
+      const pdfExts = ['.pdf','.PDF'];
+
+      // ---- Logos (small + full) ----
+      const logoSmall = document.getElementById('logoSmall');
+      const logoFull  = document.getElementById('logoFull');
+
+      const smallLogoUrl = await resolveOne([
+        ...candidatePaths('FFP-LOGO', imgExts, prefixes)
+      ]);
+      const fullLogoUrl = await resolveOne([
+        ...candidatePaths('FFP-LOGO-FULL', imgExts, prefixes)
+      ]);
+
+      if (smallLogoUrl) {
+        logoSmall.src = smallLogoUrl;
+        // also set favicon dynamically
+        const link = document.querySelector('link[rel="icon"]');
+        if (link) link.href = smallLogoUrl;
+      } else {
+        logoSmall.alt = 'Logo missing';
+      }
+      if (fullLogoUrl) {
+        logoFull.src = fullLogoUrl;
+      } else {
+        logoFull.alt = 'Logo full missing';
+      }
+
+      // ---- 3D Tour (Matterport) ----
+      const MODEL_ID = 'YeEs53oQXCi'; // <- your ID
+      const tourUrl = `https://my.matterport.com/show/?m=${MODEL_ID}&mls=1&brand=0&play=1`;
+      const posterImg = document.getElementById('tourPosterImg');
+      const open1 = document.getElementById('tourOpenLink');
+      const open2 = document.getElementById('tourOpenLink2');
+      const poster = document.getElementById('tourPoster');
+      const embedWrap = document.getElementById('tourEmbed');
+      const iframe = document.getElementById('mpIframe');
+
+      // pick a nice poster photo (try several likely filenames)
+      const posterCandidates = [
+        ...candidatePaths('20-EXT-FRONT-CENTER', imgExts, prefixes),
+        ...candidatePaths('19-EXT-FRONT-DOOR',   imgExts, prefixes),
+        ...candidatePaths('27-EXT-YARD',         imgExts, prefixes),
+        ...candidatePaths('07-KITCHEN',          imgExts, prefixes),
+      ];
+      const posterUrl = await resolveOne(posterCandidates);
+      if (posterUrl) posterImg.src = posterUrl;
+
+      open1.href = tourUrl; open2.href = tourUrl;
+      iframe.src = tourUrl;
+
+      let iframeShown = false;
+      function showIframe(){
+        if (iframeShown) return;
+        iframeShown = true;
+        poster.style.display = 'none';
+        embedWrap.style.display = 'block';
+      }
+      iframe.addEventListener('load', showIframe);
+
+      // If it hasn't loaded in 4s, keep poster as fallback
+      setTimeout(()=>{ /* noop; poster remains if blocked */ }, 4000);
+
+      // ---- Floor plan PDF ----
+      const fpBtn = document.getElementById('fpBtn');
+      const fpUrl = await resolveOne([
+        ...candidatePaths('EXAMPLE-floorplan', pdfExts, prefixes),
+        ...candidatePaths('floorplan',         pdfExts, prefixes),
+        ...candidatePaths('FloorPlan',         pdfExts, prefixes),
+      ]);
+      if (fpUrl) {
+        fpBtn.href = fpUrl;
+      } else {
+        fpBtn.textContent = 'Floor Plan PDF (missing)';
+        fpBtn.classList.remove('btn','primary');
+      }
+
+      // ---- Photo gallery (27) with resilient path/case fallback ----
+      const names = [
+        '01-ENTRY','02-DINING-ROOM','03-LIVING-ROOM','04-BUTLERS-PANTRY','05-POWDER-ROOM',
+        '06-LAUNDRY','07-KITCHEN','08-BREAKFAST-AREA','09-FAMILY-ROOM','10-OFFICE',
+        '11-BEDROOM-02','12-2ND-FL-BATHROOM','13-2ND-FL-BEDROOM-03','14-2ND-FL-LOFT','15-2ND-FL-BEDROOM-04',
+        '16-PRIMARY-BEDROOM','17-PRIMARY-WIC','18-PRIMARY-BATHROOM',
+        '19-EXT-FRONT-DOOR','20-EXT-FRONT-CENTER','21-EXT-FRONT-RIGHT','22-EXT-FRONT-LEFT',
+        '23-EXT-REAR-CENTER','24-EXT-REAR-RIGHT','25-EXT-REAR-LEFT','26-EXT-PATIO','27-EXT-YARD'
+      ];
+      const alts = [
+        'Entry','Dining','Living','Butler\'s Pantry','Powder Room',
+        'Laundry','Kitchen','Breakfast Area','Family Room','Office',
+        'Bedroom 02','2nd Floor Bathroom','2nd Floor Bedroom 03','2nd Floor Loft','2nd Floor Bedroom 04',
+        'Primary Bedroom','Primary WIC','Primary Bathroom',
+        'Exterior Front Door','Exterior Front Center','Exterior Front Right','Exterior Front Left',
+        'Exterior Rear Center','Exterior Rear Right','Exterior Rear Left','Exterior Patio','Exterior Yard'
+      ];
+      const gal = document.getElementById('gallery');
+
+      for (let i=0;i<names.length;i++){
+        const name = names[i];
+        const alt  = alts[i];
+        const cand = [
+          ...candidatePaths(name, imgExts, prefixes)
+        ];
+        const url = await resolveOne(cand);
+        const img = document.createElement('img');
+        img.className = 'shot';
+        img.alt = alt;
+        if (url) img.src = url; else img.alt = alt + ' (missing)';
+        gal.appendChild(img);
+      }
+
+      // ---- Contact form → mailto ----
+      document.getElementById('contactForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const data = new FormData(this);
+        const subject = encodeURIComponent('Flash Floor Plans Booking');
+        const body = encodeURIComponent(
+          `Agent: ${data.get('name')||''}\nBrokerage: ${data.get('company')||''}\nEmail: ${data.get('email')||''}\nAddress: ${data.get('address')||''}\nNotes: ${data.get('notes')||''}`
+        );
+        window.location.href = `mailto:danny60459@gmail.com?subject=${subject}&body=${body}`;
+      });
+    })();
   </script>
 </body>
 </html>
