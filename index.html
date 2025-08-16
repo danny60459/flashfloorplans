@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flash Floor Plans | 3D Tours • Floor Plans • Photos</title>
+  <meta name="description" content="Fast, accurate floor plans — plus 3D tours and listing-ready photos for Chicagoland realtors." />
+  <meta property="og:title" content="Flash Floor Plans" />
+  <meta property="og:description" content="Real estate media: 3D Tours, Floor Plans, Photo Extracts. Serving Chicagoland." />
+  <link rel="icon" type="image/png" href="FFP-LOGO.png" />
+  <style>
+    :root{ --bg:#0b0d12; --panel:#121624; --muted:#8f9bb3; --brand:#4ade80; --brand2:#22d3ee; --text:#eef2ff; --ring:0 0 0 2px #4ade80aa; }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:radial-gradient(1200px 800px at 80% -10%, #1b2240 0%, #0b0d12 60%)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:linear-gradient(180deg,#0b0d12de,#0b0d1200);border-bottom:1px solid #1f2437;z-index:10}
+    .nav{display:flex;align-items:center;gap:20px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand img{height:36px;width:auto;border-radius:8px;display:block}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid #2a314a;background:#121624;font-weight:600}
+    .btn:hover{box-shadow:var(--ring)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#081017;border-color:transparent}
+    .pill{font-size:13px;color:#b8ffcf;background:#113221;border:1px solid #1e5c3e;padding:6px 10px;border-radius:999px;display:inline-block}
+    .hero{padding:40px 0 20px;border-bottom:1px solid #20253a}
+    .hero h1{font-size:36px;line-height:1.15;margin:12px 0 12px}
+    .hero p{color:var(--muted);max-width:780px;margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .card{grid-column:span 12;background:linear-gradient(180deg,#111526,#0f1320);border:1px solid #20253a;border-radius:20px;padding:20px}
+    @media(min-width:900px){.split{grid-column:span 6}.third{grid-column:span 4}}
+    .kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:#9fb3c8}
+    .h2{font-size:24px;margin:6px 0 8px}
+    .muted{color:var(--muted)}
+    .embed{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid #20253a;background:#0c1020}
+    .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media(min-width:800px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .shot{aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid #20253a;background:#101422;object-fit:cover;width:100%}
+    .table{width:100%;border-collapse:collapse;margin-top:10px;border:1px solid #20253a;border-radius:12px;overflow:hidden}
+    .table th,.table td{padding:10px;border-bottom:1px solid #20253a;text-align:left}
+    .table th{background:#141a2c;font-weight:700}
+    .note{font-size:13px;color:#b8c9e6}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .badge{font-size:12px;padding:4px 8px;border:1px solid #26304e;border-radius:999px;background:#0f1320;color:#cfe9ff}
+    footer{border-top:1px solid #20253a;padding:30px 0;color:#93a1c8}
+    .input{width:100%;margin-top:6px;background:#0c1020;border:1px solid #25304e;border-radius:12px;padding:12px;color:#e8eeff}
+    .input:focus{outline:none;box-shadow:var(--ring)}
+    .header-actions{display:flex;gap:12px;align-items:center}
+    .brand-name{font-weight:800;font-size:16px}
+    .brand-lockup{display:flex;align-items:center;gap:14px}
+    .brand-lockup img{height:64px;width:auto;border-radius:12px;box-shadow:0 8px 28px #22d3ee33}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Flash Floor Plans">
+        <img src="FFP-LOGO.png" alt="Flash Floor Plans logo" />
+        <span class="brand-name">Flash Floor Plans</span>
+      </a>
+      <nav class="header-actions">
+        <a href="#examples" class="btn">Examples</a>
+        <a href="#pricing" class="btn">Pricing</a>
+        <a href="#contact" class="btn">Contact</a>
+        <a href="#book" class="btn primary">Book a Shoot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="brand-lockup">
+        <img src="FFP-LOGO-FULL.png" alt="Flash Floor Plans full logo" />
+        <div>
+          <div class="kicker">Real Estate Media • Chicagoland</div>
+          <h1>Fast, Accurate Floor Plans — plus 3D Tours & Listing-Ready Photos</h1>
+          <p>Over 10 years delivering media for Chicago-area agents. Embedded Matterport 3D tours, schematic floor plans, and curated photo extracts — all MLS-ready with simple pricing.</p>
+          <div class="pill">Typical turnaround: 24–48 hours</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMPLES -->
+    <section id="examples" class="grid" style="margin-top:24px">
+      <article class="card split">
+        <div class="kicker">Example • 3D Tour</div>
+        <h2 class="h2">Interactive 3D Tour (Matterport)</h2>
+        <div class="embed" aria-label="3D tour embed">
+          <iframe
+            title="Matterport"
+            src="https://my.matterport.com/show/?m=YeEs53oQXCi&mls=1&brand=0&play=1"
+            allow="xr-spatial-tracking; fullscreen; vr"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="note" style="margin-top:8px">
+          If the embed doesn’t load,
+          <a href="https://my.matterport.com/show/?m=YeEs53oQXCi&mls=1&brand=0&play=1" target="_blank" rel="noopener noreferrer">open the tour in a new tab</a>.
+        </p>
+      </article>
+
+      <article class="card split">
+        <div class="kicker">Example • Floor Plan</div>
+        <h2 class="h2">Measured Floor Plan</h2>
+        <p class="muted">View the full schematic as a PDF, plus optional preview images.</p>
+        <p style="margin-top:12px">
+          <a class="btn" href="EXAMPLE-floorplan.pdf" target="_blank" rel="noopener">View Floor Plan (PDF)</a>
+        </p>
+      </article>
+
+      <article class="card" style="grid-column:span 12">
+        <div class="kicker">Example • Photo Extracts</div>
+        <h2 class="h2">Listing-Ready Photos</h2>
+        <div class="gallery">
+          <img class="shot" src="01-ENTRY.JPG" alt="Entry">
+          <img class="shot" src="02-DINING-ROOM.JPG" alt="Dining">
+          <img class="shot" src="03-LIVING-ROOM.JPG" alt="Living">
+          <img class="shot" src="04-BUTLERS-PANTRY.JPG" alt="Butler's Pantry">
+          <img class="shot" src="05-POWDER-ROOM.JPG" alt="Powder Room">
+          <img class="shot" src="06-LAUNDRY.JPG" alt="Laundry">
+          <img class="shot" src="07-KITCHEN.JPG" alt="Kitchen">
+          <img class="shot" src="08-BREAKFAST-AREA.JPG" alt="Breakfast Area">
+          <img class="shot" src="09-FAMILY-ROOM.JPG" alt="Family Room">
+          <img class="shot" src="10-OFFICE.JPG" alt="Office">
+          <img class="shot" src="11-BEDROOM-02.JPG" alt="Bedroom 02">
+          <img class="shot" src="12-2ND-FL-BATHROOM.JPG" alt="2nd Floor Bathroom">
+          <img class="shot" src="13-2ND-FL-BEDROOM-03.JPG" alt="2nd Floor Bedroom 03">
+          <img class="shot" src="14-2ND-FL-LOFT.JPG" alt="2nd Floor Loft">
+          <img class="shot" src="15-2ND-FL-BEDROOM-04.JPG" alt="2nd Floor Bedroom 04">
+          <img class="shot" src="16-PRIMARY-BEDROOM.JPG" alt="Primary Bedroom">
+          <img class="shot" src="17-PRIMARY-WIC.JPG" alt="Primary WIC">
+          <img class="shot" src="18-PRIMARY-BATHROOM.JPG" alt="Primary Bathroom">
+          <img class="shot" src="19-EXT-FRONT-DOOR.JPG" alt="Front Door">
+          <img class="shot" src="20-EXT-FRONT-CENTER.JPG" alt="Front Center">
+          <img class="shot" src="21-EXT-FRONT-RIGHT.JPG" alt="Front Right">
+          <img class="shot" src="22-EXT-FRONT-LEFT.JPG" alt="Front Left">
+          <img class="shot" src="23-EXT-REAR-CENTER.JPG" alt="Rear Center">
+          <img class="shot" src="24-EXT-REAR-RIGHT.JPG" alt="Rear Right">
+          <img class="shot" src="25-EXT-REAR-LEFT.JPG" alt="Rear Left">
+          <img class="shot" src="26-EXT-PATIO.JPG" alt="Patio">
+          <img class="shot" src="27-EXT-YARD.JPG" alt="Yard">
+        </div>
+      </article>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="grid" style="margin-top:24px">
+      <article class="card third">
+        <div class="kicker">Pricing</div>
+        <h2 class="h2">3-in-1 Package</h2>
+        <ul class="muted" style="margin:0 0 8px 16px">
+          <li>Matterport 3D Virtual Tour</li>
+          <li>25+ High-Resolution Listing Photos (from the tour)</li>
+          <li>Schematic Floor Plan (PDF/PNG)</li>
+        </ul>
+        <table class="table">
+          <tr><th>Property Size (SF)</th><th>Price</th></tr>
+          <tr><td>Up to 5,000</td><td>$300</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$400</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$500</td></tr>
+          <tr><td>Over 10,000</td><td>$500 + $100 per additional 2,500 SF</td></tr>
+        </table>
+      </article>
+
+      <article class="card third">
+        <div class="kicker">Pricing</div>
+        <h2 class="h2">3D Tour + Floor Plan</h2>
+        <p class="muted" style="margin:0 0 8px">No extracted photos.</p>
+        <table class="table">
+          <tr><th>Property Size (SF)</th><th>Price</th></tr>
+          <tr><td>Up to 5,000</td><td>$225</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$325</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$425</td></tr>
+          <tr><td>10,001 – 12,500</td><td>$525</td></tr>
+          <tr><td>Above 12,500</td><td>+$100 per additional 2,500 SF</td></tr>
+        </table>
+      </article>
+
+      <article class="card third">
+        <div class="kicker">Pricing</div>
+        <h2 class="h2">Floor Plan-Only</h2>
+        <table class="table">
+          <tr><th>Property Size (SF)</th><th>Price</th></tr>
+          <tr><td>Up to 5,000</td><td>$75</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$100</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$125</td></tr>
+          <tr><td>10,001 – 12,500</td><td>$150</td></tr>
+        </table>
+        <div class="badges">
+          <span class="badge">24-hr turnaround included</span>
+          <span class="badge">6-hr Rush: +$20</span>
+          <span class="badge">Travel fee: +$20 beyond 20 miles of Burbank/Burr Ridge</span>
+          <span class="badge">MLS-ready files</span>
+          <span class="badge">10+ years experience</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="grid" style="margin-top:20px">
+      <article class="card split">
+        <div class="kicker">Contact</div>
+        <h2 class="h2">Book or request a quote</h2>
+        <p class="muted">Contact <strong>Dan Licea</strong> • <strong>📞 (add your phone)</strong></p>
+        <form id="contactForm" class="muted">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label>Agent Name<br><input required name="name" class="input"></label>
+            <label>Brokerage<br><input name="company" class="input"></label>
+            <label style="grid-column:span 2">Email<br><input required type="email" name="email" class="input"></label>
+            <label style="grid-column:span 2">Property Address<br><input name="address" class="input"></label>
+            <label style="grid-column:span 2">Notes<br><textarea name="notes" rows="4" class="input"></textarea></label>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <button class="btn primary" type="submit">Send</button>
+            <a class="btn" href="mailto:danny60459@gmail.com?subject=Flash%20Floor%20Plans%20Booking">Email directly</a>
+          </div>
+          <p class="note">This form opens your email app with a pre-filled message. We can add a backend later for form submissions.</p>
+        </form>
+      </article>
+
+      <article class="card split">
+        <div class="kicker">FAQ</div>
+        <details open><summary>Do you provide branded/unbranded links?</summary>
+          <p>Yes. I’ll provide both MLS-friendly versions of the tour.</p>
+        </details>
+        <details><summary>Do you travel outside Chicagoland?</summary>
+          <p>Yes — a $20 travel fee applies >20 miles from Burbank/Burr Ridge.</p>
+        </details>
+        <details><summary>How fast is delivery?</summary>
+          <p>Floor plan-only includes 24-hr turnaround. Rush 6-hr add-on: +$20. Full packages typically 24–48 hrs.</p>
+        </details>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Flash Floor Plans — Dan Licea</div>
+      <div class="note">Built for my agent partners.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+      const subject = encodeURIComponent('Flash Floor Plans Booking');
+      const body = encodeURIComponent(
+        `Agent: ${data.get('name')||''}\nBrokerage: ${data.get('company')||''}\nEmail: ${data.get('email')||''}\nAddress: ${data.get('address')||''}\nNotes: ${data.get('notes')||''}`
+      );
+      window.location.href = `mailto:danny60459@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
