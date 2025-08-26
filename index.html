@@ -12,9 +12,16 @@
   }
   html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
   a{color:var(--accent);text-decoration:none}
+  /* Header / Nav */
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.8);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:28px;width:auto}
+  .brand-title{font-weight:600}
+  .nav-links{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .75rem;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:.92rem}
   .container{max-width:1200px;margin:0 auto;padding:24px}
-  header{padding:24px 0;text-align:center}
-  h1{margin:0 0 6px;font-size:32px}
+  h1{margin:12px 0 6px;font-size:32px}
   .sub{color:var(--muted);font-size:14px}
   h2{margin:24px 0 12px;font-size:26px}
   h3{margin:0 0 8px;font-size:20px}
@@ -42,22 +49,102 @@
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
   .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);background:#0b0f14}
   footer{padding:32px 0;color:var(--muted);text-align:center;font-size:13px}
+  /* Contact */
+  .contact-box{display:grid;grid-template-columns:1fr;gap:10px;max-width:720px}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-<header class="container">
-  <h1>FlashFloorPlans</h1>
-  <div class="sub">Serving Chicagoland Realtors — 3D Tours, Floor Plans & Photos</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="FlashFloorPlans">
+      <img src="FFP-LOGO.png" alt="FlashFloorPlans logo" />
+      <span class="brand-title">FlashFloorPlans</span>
+    </a>
+    <div class="nav-links">
+      <a class="btn" href="#examples">Examples</a>
+      <a class="btn" href="#pricing">Pricing</a>
+      <a class="btn" href="#enhancements">Enhancements</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="container" style="text-align:center">
+  <h1>3D Tours, Floor Plans & Listing Photos</h1>
+  <div class="sub">Serving Chicagoland Realtors</div>
 </header>
 
-<section class="container">
+<!-- EXAMPLES (first) -->
+<section id="examples" class="container">
+  <h2>Examples</h2>
+  <div class="ex-grid">
+    <!-- Matterport -->
+    <div class="card">
+      <h3>Interactive 3D Tour (Matterport)</h3>
+      <div class="embed-wrap">
+        <iframe
+          src="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1"
+          width="100%" height="360" frameborder="0" allowfullscreen
+          allow="autoplay; fullscreen; web-share; xr-spatial-tracking">
+        </iframe>
+      </div>
+      <div class="helper">If the embed doesn’t load, <a href="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1" target="_blank" rel="noopener">open the tour in a new tab</a>.</div>
+    </div>
+    <!-- Floor plan PDF -->
+    <div class="card">
+      <h3>Measured Floor Plan (PDF)</h3>
+      <a href="EXAMPLE-floorplan.pdf" target="_blank" rel="noopener">
+        <img class="thumb" src="FFP-LOGO.png" alt="Open floor plan PDF">
+      </a>
+      <div class="helper">View the full schematic as a PDF.</div>
+    </div>
+  </div>
+
+  <!-- Declutter slider -->
+  <div class="card" style="margin-top:16px">
+    <h3>Digital Declutter — Before / After</h3>
+    <div class="ba" id="ba">
+      <img src="declutter-before.jpg" alt="Before">
+      <img class="after" src="declutter-after.jpg" alt="After">
+      <input type="range" min="0" max="100" value="50" aria-label="Before / After slider">
+      <div class="handle" id="handle" style="left:50%"></div>
+    </div>
+    <div class="helper">Examples: vehicle/trampoline removal, hose removal, lawn & sky touch-ups, etc.</div>
+  </div>
+
+  <!-- Optional compact gallery (uses your real filenames) -->
+  <div class="card" style="margin-top:16px">
+    <h3>Sample Listing Photos</h3>
+    <div class="gallery">
+      <img src="01-ENTRY.jpg" alt="01 Entry">
+      <img src="02-DINING-ROOM.jpg" alt="02 Dining Room">
+      <img src="03-LIVING-ROOM.jpg" alt="03 Living Room">
+      <img src="04-BUTLERS-PANTRY.jpg" alt="04 Butler's Pantry">
+      <img src="05-POWDER-ROOM.jpg" alt="05 Powder Room">
+      <img src="06-LAUNDRY.jpg" alt="06 Laundry">
+      <img src="07-KITCHEN.jpg" alt="07 Kitchen">
+      <img src="08-BREAKFAST-AREA.jpg" alt="08 Breakfast Area">
+      <img src="09-FAMILY-ROOM.jpg" alt="09 Family Room">
+      <img src="10-OFFICE.jpg" alt="10 Office">
+      <img src="16-PRIMARY-BEDROOM.jpg" alt="Primary Bedroom">
+      <img src="18-PRIMARY-BATHROOM.jpg" alt="Primary Bathroom">
+      <img src="20-EXT-FRONT-CENTER.jpg" alt="Front Exterior">
+      <img src="23-EXT-REAR-CENTER.jpg" alt="Rear Exterior">
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="container">
   <h2>Pricing</h2>
   <div class="pill-row">
     <span class="pill">MLS-ready files</span>
     <span class="pill">10+ years experience</span>
     <span class="pill">Travel fee: +$20 beyond 20 miles of Burbank/Burr Ridge</span>
   </div>
-
   <div class="grid">
     <!-- 3-in-1 -->
     <div class="card">
@@ -166,75 +253,62 @@
   </div>
 </section>
 
-<section class="container">
-  <h2>Examples</h2>
-  <div class="ex-grid">
-    <!-- Matterport -->
+<!-- DIGITAL ENHANCEMENTS -->
+<section id="enhancements" class="container">
+  <h2>Digital Enhancements (À La Carte)</h2>
+  <div class="grid">
     <div class="card">
-      <h3>Interactive 3D Tour (Matterport)</h3>
-      <div class="embed-wrap">
-        <iframe
-          src="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1"
-          width="100%" height="360" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking">
-        </iframe>
+      <h3>What we can do</h3>
+      <ul class="muted">
+        <li>Object removal (cars, trampolines, hoses, bins, signs)</li>
+        <li>Lawn repair / greener grass</li>
+        <li>Blue sky replacement</li>
+        <li>Spot clean walls/driveway; remove small clutter</li>
+        <li>Minor glare / reflection cleanup</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Simple Pricing</h3>
+      <table>
+        <tbody>
+          <tr><td>1–2 edits on the same image</td><td><b>$10 per image</b></td></tr>
+          <tr><td>3+ edits on the same image</td><td><b>$20 per image</b></td></tr>
+        </tbody>
+      </table>
+      <div class="muted" style="margin-top:8px">
+        Turnaround typically within 24–48 hrs. Send notes on what to remove/fix.
       </div>
-      <div class="helper">If the embed doesn’t load, <a href="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1" target="_blank" rel="noopener">open the tour in a new tab</a>.</div>
     </div>
-
-    <!-- Floor plan PDF -->
     <div class="card">
-      <h3>Measured Floor Plan (PDF)</h3>
-      <a href="EXAMPLE-floorplan.pdf" target="_blank" rel="noopener">
-        <img class="thumb" src="FFP-LOGO.png" alt="Open floor plan PDF">
-      </a>
-      <div class="helper">View the full schematic as a PDF.</div>
+      <h3>Before / After</h3>
+      <div class="ba" id="ba2">
+        <img src="declutter-before.jpg" alt="Before">
+        <img class="after" src="declutter-after.jpg" alt="After">
+        <input type="range" min="0" max="100" value="50" aria-label="Before / After slider">
+        <div class="handle" id="handle2" style="left:50%"></div>
+      </div>
+      <div class="helper">Slide to compare.</div>
     </div>
-  </div>
-
-  <!-- Declutter slider -->
-  <div class="card" style="margin-top:16px">
-    <h3>Digital Declutter — Before / After</h3>
-    <div class="ba" id="ba">
-      <img src="declutter-before.jpg" alt="Before">
-      <img class="after" src="declutter-after.jpg" alt="After">
-      <input type="range" min="0" max="100" value="50" aria-label="Before / After slider">
-      <div class="handle" id="handle" style="left:50%"></div>
-    </div>
-    <div class="helper">Examples: vehicle & trampoline removal, hose removal, lawn touch-ups, etc.</div>
   </div>
 </section>
 
-<section class="container">
-  <h2>Sample Listing Photos</h2>
-  <!-- These filenames match the files in your repo root -->
-  <div class="gallery">
-    <img src="01-ENTRY.jpg" alt="01 Entry">
-    <img src="02-DINING-ROOM.jpg" alt="02 Dining Room">
-    <img src="03-LIVING-ROOM.jpg" alt="03 Living Room">
-    <img src="04-BUTLERS-PANTRY.jpg" alt="04 Butler's Pantry">
-    <img src="05-POWDER-ROOM.jpg" alt="05 Powder Room">
-    <img src="06-LAUNDRY.jpg" alt="06 Laundry">
-    <img src="07-KITCHEN.jpg" alt="07 Kitchen">
-    <img src="08-BREAKFAST-AREA.jpg" alt="08 Breakfast Area">
-    <img src="09-FAMILY-ROOM.jpg" alt="09 Family Room">
-    <img src="10-OFFICE.jpg" alt="10 Office">
-    <img src="11-BEDROOM-02.jpg" alt="11 Bedroom">
-    <img src="12-2ND-FL-BATHROOM.jpg" alt="12 Bathroom">
-    <img src="13-2ND-FL-BEDROOM-03.jpg" alt="13 Bedroom">
-    <img src="14-2ND-FL-LOFT.jpg" alt="14 Loft">
-    <img src="15-2ND-FL-BEDROOM-04.jpg" alt="15 Bedroom">
-    <img src="16-PRIMARY-BEDROOM.jpg" alt="16 Primary Bedroom">
-    <img src="17-PRIMARY-WIC.jpg" alt="17 Primary WIC">
-    <img src="18-PRIMARY-BATHROOM.jpg" alt="18 Primary Bathroom">
-    <img src="19-EXT-FRONT-DOOR.jpg" alt="19 Exterior Front Door">
-    <img src="20-EXT-FRONT-CENTER.jpg" alt="20 Exterior Front Center">
-    <img src="21-EXT-FRONT-RIGHT.jpg" alt="21 Exterior Front Right">
-    <img src="22-EXT-FRONT-LEFT.jpg" alt="22 Exterior Front Left">
-    <img src="23-EXT-REAR-CENTER.jpg" alt="23 Exterior Rear Center">
-    <img src="24-EXT-REAR-RIGHT.jpg" alt="24 Exterior Rear Right">
-    <img src="25-EXT-REAR-LEFT.jpg" alt="25 Exterior Rear Left">
-    <img src="26-EXT-PATIO.jpg" alt="26 Exterior Patio">
-    <img src="27-EXT-YARD.jpg" alt="27 Exterior Yard">
+<!-- CONTACT -->
+<section id="contact" class="container">
+  <h2>Contact</h2>
+  <div class="card contact-box">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="FFP-LOGO.png" alt="FlashFloorPlans logo" style="height:36px;width:auto" />
+      <div><b>FlashFloorPlans</b><div class="muted">Chicagoland</div></div>
+    </div>
+    <div>
+      <div class="muted">Email</div>
+      <div><a href="mailto:dan.floorplans@gmail.com">dan.floorplans@gmail.com</a></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="mailto:dan.floorplans@gmail.com?subject=Booking%20Request">Email Us</a>
+      <a class="btn" href="#pricing">See Pricing</a>
+      <a class="btn" href="#examples">View Examples</a>
+    </div>
   </div>
 </section>
 
@@ -243,17 +317,19 @@
 </footer>
 
 <script>
-  // Before/After slider logic
-  (function(){
-    const wrap=document.getElementById('ba');
+  // Before/After slider logic (two sliders)
+  function setupBA(wrapId, handleId){
+    const wrap=document.getElementById(wrapId);
     if(!wrap) return;
     const after=wrap.querySelector('.after');
     const range=wrap.querySelector('input[type="range"]');
-    const handle=document.getElementById('handle');
+    const handle=document.getElementById(handleId);
     const set=(v)=>{after.style.clipPath=`inset(0 0 0 ${v}%)`;handle.style.left=v+'%'}
     range.addEventListener('input',e=>set(e.target.value));
     set(range.value);
-  })();
+  }
+  setupBA('ba','handle');
+  setupBA('ba2','handle2');
 </script>
 </body>
 </html>
