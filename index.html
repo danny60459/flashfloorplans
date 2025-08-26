@@ -1,296 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FlashFloorPlans — 3D Tours, Floor Plans & Photos</title>
-  <meta name="description" content="Serving Chicagoland Realtors with Matterport 3D Tours, measured floor plans, curated listing photos, and digital declutter image enhancements."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root { --bg:#0d1117; --card:#161b22; --muted:#8b949e; --text:#e6edf3; --border:rgba(255,255,255,.12); --pill:rgba(255,255,255,.08); --maxw:1200px; --accent:#58a6ff; }
-    *{box-sizing:border-box} html,body{margin:0;padding:0}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans';background:var(--bg);color:var(--text);line-height:1.45}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);background:linear-gradient(180deg,rgba(13,17,23,.9),rgba(13,17,23,.7));border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{font-weight:800;letter-spacing:.5px;font-size:20px}
-    .nav a.btn{background:var(--pill);border:1px solid var(--border);padding:8px 14px;border-radius:10px}
-    .hero{padding:72px 0 48px;text-align:center}
-    .hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,44px)}
-    .hero p{color:var(--muted);margin:0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .card h3{margin:0 0 10px}
-    .pill{display:inline-flex;gap:.4rem;align-items:center;padding:.35rem .7rem;border-radius:999px;background:var(--pill);border:1px solid var(--border);font-size:.85rem}
-    .pills{display:flex;gap:.5rem;flex-wrap:wrap}
-    .muted{color:var(--muted)}
-    section{padding:48px 0}
-    .section-title{text-align:center;margin:0 0 24px;font-size:clamp(22px,3vw,32px)}
-    .media{width:100%;aspect-ratio:16/9;border-radius:12px;border:1px solid var(--border);overflow:hidden;background:#0a0f14}
-    .media iframe,.media img{width:100%;height:100%;display:block;border:0;object-fit:cover}
-    .pricing .table{width:100%;border-collapse:collapse}
-    .pricing th,.pricing td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-    .pricing .bullets{margin:0 0 10px 18px}
-    .pricing .bullets li{margin:4px 0}
-    .global-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:12px 0 28px}
-    .ba{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:12px;border:1px solid var(--border);overflow:hidden;background:#0a0f14;touch-action:none;user-select:none}
-    .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .ba .after{clip-path:inset(0 0 0 50%);transition:clip-path .06s linear}
-    .ba .handle{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:3px;background:rgba(255,255,255,.9)}
-    .ba .knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:rgba(0,0,0,.35);display:grid;place-items:center;color:#fff;font-size:18px;backdrop-filter:blur(2px)}
-    .ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
-    footer{color:var(--muted);border-top:1px solid var(--border);padding:24px 0;text-align:center}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlashFloorPlans • 3D Tours, Floor Plans & Photos</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --text:#e6edf3; --muted:#9da7b3;
+    --border:rgba(255,255,255,.10); --pill:rgba(255,255,255,.08);
+    --accent:#58a6ff;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  a{color:var(--accent);text-decoration:none}
+  .container{max-width:1200px;margin:0 auto;padding:24px}
+  header{padding:24px 0;text-align:center}
+  h1{margin:0 0 6px;font-size:32px}
+  .sub{color:var(--muted);font-size:14px}
+  h2{margin:24px 0 12px;font-size:26px}
+  h3{margin:0 0 8px;font-size:20px}
+  .pill{display:inline-flex;gap:.4rem;align-items:center;padding:.38rem .7rem;border-radius:999px;background:var(--pill);border:1px solid var(--border);font-size:.82rem}
+  .pill-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:10px 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .muted{color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  /* Examples */
+  .ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:16px}
+  .thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--border);background:#0b0f14}
+  .embed-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);background:#0b0f14}
+  .helper{font-size:13px;color:var(--muted);margin-top:8px}
+  /* Before/After slider */
+  .ba{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:10px}
+  .ba img{display:block;width:100%;height:auto;user-select:none;pointer-events:none}
+  .ba .after{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+  .ba input[type="range"]{position:absolute;inset:0;appearance:none;background:transparent;cursor:ew-resize}
+  .ba input[type="range"]::-webkit-slider-thumb{appearance:none;width:2px;height:100%;background:#fff;box-shadow:0 0 0 9999px rgba(255,255,255,.001)}
+  .ba .handle{position:absolute;top:50%;transform:translate(-50%,-50%);width:2px;height:100%;background:#fff}
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+  .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);background:#0b0f14}
+  footer{padding:32px 0;color:var(--muted);text-align:center;font-size:13px}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand">FlashFloorPlans</div>
-    <nav class="pills">
-      <a class="btn" href="#pricing">Pricing</a>
-      <a class="btn" href="#declutter">Digital Declutter</a>
-      <a class="btn" href="#contact">Contact</a>
-    </nav>
-  </div>
+<header class="container">
+  <h1>FlashFloorPlans</h1>
+  <div class="sub">Serving Chicagoland Realtors — 3D Tours, Floor Plans & Photos</div>
 </header>
 
-<main>
-  <section class="hero wrap">
-    <h1>Fast, accurate Floor Plans — plus 3D Tours & MLS-ready Photos</h1>
-    <p>Serving Chicagoland Realtors • Typical turnaround: 24–48 hours</p>
-  </section>
+<section class="container">
+  <h2>Pricing</h2>
+  <div class="pill-row">
+    <span class="pill">MLS-ready files</span>
+    <span class="pill">10+ years experience</span>
+    <span class="pill">Travel fee: +$20 beyond 20 miles of Burbank/Burr Ridge</span>
+  </div>
 
-  <section class="wrap">
-    <h2 class="section-title">Examples</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Interactive 3D Tour (Matterport)</h3>
-        <div class="media">
-          <iframe allow="fullscreen; web-share; xr-spatial-tracking" src="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1"></iframe>
-        </div>
-        <p class="muted" style="margin-top:8px;">If the embed doesn’t load, <a href="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1" target="_blank" rel="noopener">open the tour in a new tab</a>.</p>
-      </article>
-      <article class="card">
-        <h3>Measured Floor Plan (PDF)</h3>
-        <div class="media">
-          <a href="floorplan.pdf" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1470&auto=format&fit=crop" alt="Floor plan preview (placeholder)">
-          </a>
-        </div>
-        <p class="muted" style="margin-top:8px;">View the full schematic as a PDF.</p>
-      </article>
-    </div>
-
-    <div class="card" style="margin-top:24px;">
-      <h3 style="margin-bottom:10px;">Digital Declutter — Before / After</h3>
-      <div class="ba" id="ba">
-        <img class="before" src="declutter-before.jpg" alt="Before">
-        <img class="after"  src="declutter-after.jpg"  alt="After">
-        <div class="handle"></div>
-        <div class="knob" aria-hidden="true">↔</div>
-        <input id="baRange" type="range" min="0" max="100" value="50" aria-label="Slide to compare before and after">
-      </div>
-      <p class="muted" style="margin-top:10px;">Drag the handle to compare. Place <code>declutter-before.jpg</code> and <code>declutter-after.jpg</code> next to this file.</p>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="global-pills">
-      <span class="pill">MLS-ready files</span>
-      <span class="pill">10+ years experience</span>
-      <span class="pill">Travel fee: +$20 beyond 20 miles of Burbank/Burr Ridge</span>
-    </div>
-  </section>
-
-  <section class="wrap pricing" id="pricing">
-    <h2 class="section-title">Pricing</h2>
-    <div class="grid">
-      <section class="card">
-        <h3>3-in-1 Package</h3>
-        <ul class="bullets">
-          <li>Matterport 3D Virtual Tour</li>
-          <li>25+ High-Resolution Listing Photos</li>
-          <li>Schematic Floor Plan (PDF/PNG)</li>
-        </ul>
-        <table class="table">
-          <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td>Up to 5,000</td><td>$300</td></tr>
-            <tr><td>5,001 – 7,500</td><td>$400</td></tr>
-            <tr><td>7,501 – 10,000</td><td>$500</td></tr>
-            <tr><td>Over 10,000</td><td>$500 + $100 per additional 2,500 SF</td></tr>
-          </tbody>
-        </table>
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">24–48 hr turnaround</span>
-          <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>3-in-1 Lite</h3>
-        <ul class="bullets">
-          <li>Matterport 3D Virtual Tour</li>
-          <li>10 MLS-ready Photos</li>
-          <li>Schematic Floor Plan (PDF/PNG)</li>
-        </ul>
-        <table class="table">
-          <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td>Up to 5,000</td><td>$250</td></tr>
-            <tr><td>5,001 – 7,500</td><td>$350</td></tr>
-            <tr><td>7,501 – 10,000</td><td>$450</td></tr>
-            <tr><td>Over 10,000</td><td>$450 + $100 per additional 2,500 SF</td></tr>
-          </tbody>
-        </table>
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">24–48 hr turnaround</span>
-          <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>3D Tour + Floor Plan</h3>
-        <p class="muted" style="margin:.25rem 0 .5rem;">No extracted photos.</p>
-        <table class="table">
-          <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td>Up to 5,000</td><td>$225</td></tr>
-            <tr><td>5,001 – 7,500</td><td>$325</td></tr>
-            <tr><td>7,501 – 10,000</td><td>$425</td></tr>
-            <tr><td>10,001 – 12,500</td><td>$525</td></tr>
-            <tr><td>Above 12,500</td><td>+$100 per additional 2,500 SF</td></tr>
-          </tbody>
-        </table>
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">24–48 hr turnaround</span>
-          <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>Photos + Floor Plan</h3>
-        <ul class="bullets">
-          <li>10 MLS-ready Photos (extracted from scan)</li>
-          <li>Schematic Floor Plan (PDF/PNG)</li>
-          <li><strong>No 3D tour link (no hosting required)</strong></li>
-        </ul>
-        <table class="table">
-          <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td>Up to 5,000</td><td>$200</td></tr>
-            <tr><td>5,001 – 7,500</td><td>$225</td></tr>
-            <tr><td>7,501 – 10,000</td><td>$250</td></tr>
-            <tr><td>10,001 – 12,500</td><td>$275</td></tr>
-            <tr><td>Above 12,500</td><td>+$25 per additional 2,500 SF</td></tr>
-          </tbody>
-        </table>
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">24–48 hr turnaround</span>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>Floor Plan-Only</h3>
-        <table class="table">
-          <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td>Up to 5,000</td><td>$75</td></tr>
-            <tr><td>5,001 – 7,500</td><td>$100</td></tr>
-            <tr><td>7,501 – 10,000</td><td>$125</td></tr>
-            <tr><td>10,001 – 12,500</td><td>$150</td></tr>
-          </tbody>
-        </table>
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">24 hr turnaround included</span>
-          <span class="pill">6-hr Rush: +$20</span>
-        </div>
-      </section>
-    </div>
-  </section>
-
-  <section class="wrap" id="declutter">
-    <h2 class="section-title">Digital Declutter (A-la-carte)</h2>
-    <p class="muted" style="text-align:center;max-width:820px;margin:0 auto 18px;">
-      Object removal, greener lawns, blue skies, sign and car cleanup — quick, listing-friendly edits to polish your photos.
-    </p>
-    <div class="grid" style="align-items:start;">
-      <article class="card">
-        <h3>Pricing</h3>
-        <ul class="bullets">
-          <li><strong>Single or Double enhancement</strong> (e.g., object removal + grass fix): <strong>$10 / image</strong></li>
-          <li><strong>Three+ enhancements</strong> in one image (e.g., remove truck + trampoline + hose + grass fixes): <strong>$20 / image</strong></li>
-        </ul>
-        <p class="muted">Bulk or whole-album cleanup? Ask for a quote.</p>
-        <div class="pills" style="margin-top:8px;">
-          <span class="pill">Delivered as MLS-ready JPG</span>
-          <span class="pill">Most edits 24–48 hrs</span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>What we typically clean</h3>
-        <ul class="bullets">
-          <li>Driveway/curb clutter, trash bins, vehicles</li>
-          <li>Power cords, hoses, toys, magnets, counter clutter</li>
-          <li>Patchy lawns, dull skies (tasteful only)</li>
-        </ul>
-        <p class="muted">We keep edits realistic and MLS-compliant (no misrepresentation).</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="wrap" id="contact">
-    <h2 class="section-title">Book or request a quote</h2>
+  <div class="grid">
+    <!-- 3-in-1 -->
     <div class="card">
-      <p>Email: <a href="mailto:flashfloorplans@gmail.com">flashfloorplans@gmail.com</a></p>
-      <p>Text to schedule: (708) 699-2957</p>
-      <p class="muted">Travel fee may apply beyond 20 miles of Burbank/Burr Ridge.</p>
+      <h3>3-in-1 Package</h3>
+      <ul class="muted">
+        <li>Matterport 3D Virtual Tour</li>
+        <li>25+ High-Resolution Listing Photos</li>
+        <li>Schematic Floor Plan (PDF/PNG)</li>
+      </ul>
+      <table>
+        <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>$300</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$400</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$500</td></tr>
+          <tr><td>Over 10,000</td><td>$500 + $100 / additional 2,500 SF</td></tr>
+        </tbody>
+      </table>
+      <div class="pills">
+        <span class="pill">24–48 hr turnaround</span>
+        <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
+      </div>
     </div>
-  </section>
-</main>
+
+    <!-- 3-in-1 Lite -->
+    <div class="card">
+      <h3>3-in-1 Lite</h3>
+      <ul class="muted">
+        <li>Matterport 3D Virtual Tour</li>
+        <li>10 MLS-ready Photos</li>
+        <li>Schematic Floor Plan (PDF/PNG)</li>
+      </ul>
+      <table>
+        <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>$250</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$350</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$450</td></tr>
+          <tr><td>Over 10,000</td><td>$450 + $100 / additional 2,500 SF</td></tr>
+        </tbody>
+      </table>
+      <div class="pills">
+        <span class="pill">24–48 hr turnaround</span>
+        <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
+      </div>
+    </div>
+
+    <!-- 3D + FP -->
+    <div class="card">
+      <h3>3D Tour + Floor Plan</h3>
+      <div class="muted">No extracted photos.</div>
+      <table>
+        <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>$225</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$325</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$425</td></tr>
+          <tr><td>10,001 – 12,500</td><td>$525</td></tr>
+          <tr><td>Above 12,500</td><td>+$100 per additional 2,500 SF</td></tr>
+        </tbody>
+      </table>
+      <div class="pills">
+        <span class="pill">24–48 hr turnaround</span>
+        <span class="pill">Hosting: Free 6-mo, then $50 / 6-mo or $10 / mo</span>
+      </div>
+    </div>
+
+    <!-- Photos + FP -->
+    <div class="card">
+      <h3>Photos + Floor Plan</h3>
+      <ul class="muted">
+        <li>10 MLS-ready Photos (extracted from scan)</li>
+        <li>Schematic Floor Plan (PDF/PNG)</li>
+        <li><b>No 3D tour link (no hosting required)</b></li>
+      </ul>
+      <table>
+        <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>$200</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$225</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$250</td></tr>
+          <tr><td>10,001 – 12,500</td><td>$275</td></tr>
+          <tr><td>Above 12,500</td><td>+$25 per additional 2,500 SF</td></tr>
+        </tbody>
+      </table>
+      <div class="pills"><span class="pill">24–48 hr turnaround</span></div>
+    </div>
+
+    <!-- FP only -->
+    <div class="card">
+      <h3>Floor Plan-Only</h3>
+      <table>
+        <thead><tr><th>Property Size (SF)</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>$75</td></tr>
+          <tr><td>5,001 – 7,500</td><td>$100</td></tr>
+          <tr><td>7,501 – 10,000</td><td>$125</td></tr>
+          <tr><td>10,001 – 12,500</td><td>$150</td></tr>
+        </tbody>
+      </table>
+      <div class="pills">
+        <span class="pill">24 hr turnaround included</span>
+        <span class="pill">6-hr Rush: +$20</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Examples</h2>
+  <div class="ex-grid">
+    <!-- Matterport -->
+    <div class="card">
+      <h3>Interactive 3D Tour (Matterport)</h3>
+      <div class="embed-wrap">
+        <iframe
+          src="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1"
+          width="100%" height="360" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking">
+        </iframe>
+      </div>
+      <div class="helper">If the embed doesn’t load, <a href="https://my.matterport.com/show/?m=DWfG3igTBda&mls=1" target="_blank" rel="noopener">open the tour in a new tab</a>.</div>
+    </div>
+
+    <!-- Floor plan PDF -->
+    <div class="card">
+      <h3>Measured Floor Plan (PDF)</h3>
+      <a href="EXAMPLE-floorplan.pdf" target="_blank" rel="noopener">
+        <img class="thumb" src="FFP-LOGO.png" alt="Open floor plan PDF">
+      </a>
+      <div class="helper">View the full schematic as a PDF.</div>
+    </div>
+  </div>
+
+  <!-- Declutter slider -->
+  <div class="card" style="margin-top:16px">
+    <h3>Digital Declutter — Before / After</h3>
+    <div class="ba" id="ba">
+      <img src="declutter-before.jpg" alt="Before">
+      <img class="after" src="declutter-after.jpg" alt="After">
+      <input type="range" min="0" max="100" value="50" aria-label="Before / After slider">
+      <div class="handle" id="handle" style="left:50%"></div>
+    </div>
+    <div class="helper">Examples: vehicle & trampoline removal, hose removal, lawn touch-ups, etc.</div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Sample Listing Photos</h2>
+  <!-- These filenames match the files in your repo root -->
+  <div class="gallery">
+    <img src="01-ENTRY.jpg" alt="01 Entry">
+    <img src="02-DINING-ROOM.jpg" alt="02 Dining Room">
+    <img src="03-LIVING-ROOM.jpg" alt="03 Living Room">
+    <img src="04-BUTLERS-PANTRY.jpg" alt="04 Butler's Pantry">
+    <img src="05-POWDER-ROOM.jpg" alt="05 Powder Room">
+    <img src="06-LAUNDRY.jpg" alt="06 Laundry">
+    <img src="07-KITCHEN.jpg" alt="07 Kitchen">
+    <img src="08-BREAKFAST-AREA.jpg" alt="08 Breakfast Area">
+    <img src="09-FAMILY-ROOM.jpg" alt="09 Family Room">
+    <img src="10-OFFICE.jpg" alt="10 Office">
+    <img src="11-BEDROOM-02.jpg" alt="11 Bedroom">
+    <img src="12-2ND-FL-BATHROOM.jpg" alt="12 Bathroom">
+    <img src="13-2ND-FL-BEDROOM-03.jpg" alt="13 Bedroom">
+    <img src="14-2ND-FL-LOFT.jpg" alt="14 Loft">
+    <img src="15-2ND-FL-BEDROOM-04.jpg" alt="15 Bedroom">
+    <img src="16-PRIMARY-BEDROOM.jpg" alt="16 Primary Bedroom">
+    <img src="17-PRIMARY-WIC.jpg" alt="17 Primary WIC">
+    <img src="18-PRIMARY-BATHROOM.jpg" alt="18 Primary Bathroom">
+    <img src="19-EXT-FRONT-DOOR.jpg" alt="19 Exterior Front Door">
+    <img src="20-EXT-FRONT-CENTER.jpg" alt="20 Exterior Front Center">
+    <img src="21-EXT-FRONT-RIGHT.jpg" alt="21 Exterior Front Right">
+    <img src="22-EXT-FRONT-LEFT.jpg" alt="22 Exterior Front Left">
+    <img src="23-EXT-REAR-CENTER.jpg" alt="23 Exterior Rear Center">
+    <img src="24-EXT-REAR-RIGHT.jpg" alt="24 Exterior Rear Right">
+    <img src="25-EXT-REAR-LEFT.jpg" alt="25 Exterior Rear Left">
+    <img src="26-EXT-PATIO.jpg" alt="26 Exterior Patio">
+    <img src="27-EXT-YARD.jpg" alt="27 Exterior Yard">
+  </div>
+</section>
 
 <footer>
-  <div class="wrap">© <span id="y"></span> FlashFloorPlans</div>
+  © FlashFloorPlans
 </footer>
 
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  const ba = document.getElementById('ba');
-  const after = ba.querySelector('.after');
-  const handle = ba.querySelector('.handle');
-  const knob = ba.querySelector('.knob');
-  const range = document.getElementById('baRange');
-
-  function setSplit(pct){
-    pct = Math.min(100, Math.max(0, pct));
-    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    handle.style.left = pct + '%';
-    knob.style.left = pct + '%';
-    range.value = pct;
-  }
-  range.addEventListener('input', e => setSplit(e.target.value));
-
-  let down=false;
-  function posFromEvent(ev){
-    const r = ba.getBoundingClientRect();
-    const x = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left;
-    return (x / r.width) * 100;
-  }
-  function onDown(ev){ down=true; setSplit(posFromEvent(ev)); }
-  function onMove(ev){ if(down){ setSplit(posFromEvent(ev)); } }
-  function onUp(){ down=false; }
-  ba.addEventListener('mousedown', onDown);
-  ba.addEventListener('mousemove', onMove);
-  window.addEventListener('mouseup', onUp);
-  ba.addEventListener('touchstart', onDown, {passive:true});
-  ba.addEventListener('touchmove', onMove, {passive:true});
-  window.addEventListener('touchend', onUp);
-
-  setSplit(50);
+  // Before/After slider logic
+  (function(){
+    const wrap=document.getElementById('ba');
+    if(!wrap) return;
+    const after=wrap.querySelector('.after');
+    const range=wrap.querySelector('input[type="range"]');
+    const handle=document.getElementById('handle');
+    const set=(v)=>{after.style.clipPath=`inset(0 0 0 ${v}%)`;handle.style.left=v+'%'}
+    range.addEventListener('input',e=>set(e.target.value));
+    set(range.value);
+  })();
 </script>
 </body>
 </html>
